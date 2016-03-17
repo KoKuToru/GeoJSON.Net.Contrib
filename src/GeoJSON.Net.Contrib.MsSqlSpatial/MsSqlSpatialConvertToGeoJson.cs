@@ -35,13 +35,6 @@ namespace GeoJSON.Net.Contrib.MsSqlSpatial
 				return null;
 			}
 
-			// Make valid if necessary
-			sqlGeometry = sqlGeometry.MakeValidIfInvalid();
-			if (sqlGeometry.STIsValid().IsFalse)
-			{
-				throw new Exception("Invalid geometry : " + sqlGeometry.IsValidDetailed());
-			}
-
 			// Conversion using geometry sink
 			SqlGeometryGeoJsonSink sink = new SqlGeometryGeoJsonSink();
 			sqlGeometry.Populate(sink);
@@ -58,13 +51,6 @@ namespace GeoJSON.Net.Contrib.MsSqlSpatial
 			if (sqlGeometry == null || sqlGeometry.IsNull)
 			{
 				return null;
-			}
-
-			// Make valid if necessary
-			sqlGeometry = sqlGeometry.MakeValidIfInvalid();
-			if (sqlGeometry.STIsValid().IsFalse)
-			{
-				throw new Exception("Invalid geometry : " + sqlGeometry.IsValidDetailed());
 			}
 
 			// Conversion using geometry sink
@@ -93,13 +79,6 @@ namespace GeoJSON.Net.Contrib.MsSqlSpatial
 				return null;
 			}
 
-			// Make valid if necessary
-			sqlGeography = sqlGeography.MakeValidIfInvalid();
-			if (sqlGeography.STIsValid().IsFalse)
-			{
-				throw new Exception("Invalid geometry : " + sqlGeography.IsValidDetailed());
-			}
-
 			// Conversion using geography sink
 			SqlGeographyGeoJsonSink sink = new SqlGeographyGeoJsonSink();
 			sqlGeography.Populate(sink);
@@ -116,13 +95,6 @@ namespace GeoJSON.Net.Contrib.MsSqlSpatial
 			if (sqlGeography == null || sqlGeography.IsNull)
 			{
 				return null;
-			}
-
-			// Make valid if necessary
-			sqlGeography = sqlGeography.MakeValidIfInvalid();
-			if (sqlGeography.STIsValid().IsFalse)
-			{
-				throw new Exception("Invalid geometry : " + sqlGeography.IsValidDetailed());
 			}
 
 			// Conversion using geography sink
